@@ -2,24 +2,24 @@
 
 ## Section A Lab Reflections
 
-The five labs closest to our problem are Text Generation, Structured Extraction, Audio + Voice, Document Retrieval, and Tool Use, because our problem is an alert email that gets written, sent late, and never becomes a pattern.
+The five labs closest to our problem are Text Generation, Structured Extraction, Audio + Voice, Document Retrieval, and Tool Use, because our problem is an alert email that gets written by hand, sent late, and never checked against the alerts before it.
 
-**Lab 1 Text Generation.** When I asked the model to write a campus alert it ended with the same "stay aware of your surroundings" line Joe's real emails do, the part [259] called obvious suggestions.
+**Lab 1 Text Generation.** I typed "apple" and the model gave me the fruit and then Apple Inc. too, 407 output tokens for one word. Joe writes alerts by hand, and this shows the model will pad unless you box it in.
 
-**Lab 2 Structured Extraction.** The model pulled location and type out of a pasted alert into JSON, but set time to null because the email said "early this morning," which is how real alerts are worded.
+**Lab 2 Structured Extraction.** Without a schema the same report came back "High" on run 1 and "Immediate" on run 2. With the schema it was MEDIUM all three runs, but location still said "possibly 123 or 125," so the form fixes the format, not the fuzzy address.
 
-**Lab 4 Audio + Voice.** Bà Linh [231] hung up on the non-emergency line because the recording was too fast. Transcription was close on clear speech but dropped words when I mumbled, so the phone side is not a free win.
+**Lab 4 Audio + Voice.** Bà Linh [231] hung up on the non-emergency line because the English recording was too fast. The cost table put 500 three-minute calls a day at $270 a month, which is cheap next to a call that never gets made.
 
-**Lab 5 Document Retrieval.** Joe said 4th and San Fernando is "burned into my head as a spot." Retrieval found the right chunk 3 out of 4 times, which is the memory Joe has that nobody else does.
+**Lab 5 Document Retrieval.** The search pulled 8,174 input tokens against 19 without it, and turn 1 mixed a smoke shop raid into an illegal dumping question. Joe's "spot" at 4th and San Fernando is exactly the kind of thing search would get wrong and memory would get right.
 
-**Lab 7 Tool Use.** The model called a lookup tool instead of guessing a value. That is the piece that could check CrimeMapping, which only updates once a day, before an alert goes out.
+**Lab 7 Tool Use.** The log ended with 3 reports and 123 Main St showed up twice, once MEDIUM and once HIGH. Nothing flagged the repeat. That is Joe's problem in one table.
 
 ## Section B Raw Idea
 
-The civic problem is students get crime alerts after the fact with no sense of whether the spot is a pattern.
-The people most affected are Joe, the UPD analyst who drafts the alerts and is too worn out to tell a one-off from a repeat.
-AI could help by reading his draft, pulling the location, checking past alerts, and adding one line like "third incident here since March, last time UPD added a patrol."
+The civic problem is students get crime alerts after the fact with no sense of whether the spot is a repeat.
+The people most affected are Joe, the UPD analyst who drafts the alerts and is too worn out to tell a one-off from a pattern.
+AI could help by reading his draft, pulling the location, checking it against past alerts, and adding one line like "third incident here since March."
 The input would be text (the draft email) and the output needs to be one short sentence appended to the draft.
-This opportunity draws on Lab 2 Structured Extraction, Lab 5 Document Retrieval, and Lab 1 Text Generation.
-The hard part of the harness is the retrieval box, because old alerts spell the same corner five different ways and a miss means the pattern stays invisible.
-The assumption I have not confirmed is that Joe would report or word things differently if the draft told him it was a repeat.
+This opportunity draws on Lab 2 Structured Extraction, Lab 7 Tool Use + Integrations, and Lab 1 Text Generation.
+The hard part of the harness is the tool box, because the lookup has to match "4th and San Fernando" to "San Fernando & 4th" and a miss means the pattern stays invisible.
+The assumption I have not confirmed is that Joe would word or send the alert differently if the draft told him it was a repeat.
