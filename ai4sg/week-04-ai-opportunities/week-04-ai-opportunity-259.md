@@ -2,17 +2,17 @@
 
 ## Section A Lab Reflections
 
-The five labs closest to our problem are Text Generation, Structured Extraction, Audio + Voice, Document Retrieval, and Tool Use, because our whole problem is an alert email that gets written, sent late, and never turned into a pattern.
+The five labs closest to our problem are Text Generation, Structured Extraction, Audio + Voice, Document Retrieval, and Tool Use, because our problem is an alert email that gets written, sent late, and never becomes a pattern.
 
-**Lab 1 Text Generation.** Joe writes the alert emails by hand. When I asked the model to write a campus alert it gave me the same "stay aware of your surroundings" line Joe's real emails end with, which is the part [259] called obvious suggestions.
+**Lab 1 Text Generation.** When I asked the model to write a campus alert it ended with the same "stay aware of your surroundings" line Joe's real emails do, the part [259] called obvious suggestions.
 
-**Lab 2 Structured Extraction.** The model pulled location, time, and incident type out of a pasted alert into JSON. It got the intersection right but put the time as null because the email said "early this morning," which is how the real alerts are worded.
+**Lab 2 Structured Extraction.** The model pulled location and type out of a pasted alert into JSON, but set time to null because the email said "early this morning," which is how real alerts are worded.
 
-**Lab 4 Audio + Voice.** Bà Linh [231] hung up on the non-emergency line because the recording was too fast. In the lab the transcription came back close to correct on clear speech but dropped words when I mumbled, so the phone side is not a free win.
+**Lab 4 Audio + Voice.** Bà Linh [231] hung up on the non-emergency line because the recording was too fast. Transcription was close on clear speech but dropped words when I mumbled, so the phone side is not a free win.
 
-**Lab 5 Document Retrieval.** Joe said the 4th and San Fernando corner is "burned into my head as a spot." In the lab, asking about a topic across a pile of documents returned the right chunk 3 out of 4 times, which is basically the memory Joe has in his head but nobody else has.
+**Lab 5 Document Retrieval.** Joe said 4th and San Fernando is "burned into my head as a spot." Retrieval found the right chunk 3 out of 4 times, which is the memory Joe has that nobody else does.
 
-**Lab 7 Tool Use.** The model called a lookup tool on its own when it needed a value instead of guessing. That is the piece that could check CrimeMapping, which only updates once a day, before an alert goes out.
+**Lab 7 Tool Use.** The model called a lookup tool instead of guessing a value. That is the piece that could check CrimeMapping, which only updates once a day, before an alert goes out.
 
 ## Section B Raw Idea
 
